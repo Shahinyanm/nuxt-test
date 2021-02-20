@@ -26,7 +26,7 @@
 </template>
 <router>
     {
-    path: '/products/filter/:gender?/:prihoditsja?/:interesy?/:podarka?/:professiya?'
+    path: '/products/filter/:pol?/:kemPrihoditsja?/:povod?/:interesy?/:tipPodarka?/:professiya?'
     }
 </router>
 <script>
@@ -69,7 +69,12 @@
       },
       selectFilter (filter, parent) {
 
-        this.$store.dispatch('filters/ACT_SELECT_FILTER', { filter: filter, parent: parent })
+        this.$store.dispatch('filters/ACT_SELECT_FILTER', { filter: filter, parent: parent }).then(response=>{
+         let params = this.$route.params
+         params[parent.slug] = filter.slug
+
+          this.$router.push({name:'products-filter',params:params})
+        })
       },
     },
   }

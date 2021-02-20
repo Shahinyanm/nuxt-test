@@ -27,7 +27,7 @@ export const state = () => ({
     },
     {
       type: 'radio',
-      slug: 'kem-prihoditsja',
+      slug: 'kemPrihoditsja',
       title: 'Кем приходится?',
       condition: null,
       values: [
@@ -186,7 +186,7 @@ export const state = () => ({
     },
     {
       type: 'radio',
-      slug: 'tip-podarka',
+      slug: 'tipPodarka',
       title: 'Тип подарка',
       condition: null,
       values: [
