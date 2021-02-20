@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full bg-white">
+  <div class="w-full h-screen bg-white cursor-pointer text-6xl flex justify-center items-center">
       <nuxt-link to="/products/filter">Filters</nuxt-link>
   </div>
 </template>

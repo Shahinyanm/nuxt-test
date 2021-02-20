@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 export const state = () => ({
   selectedFilters: {},
   types: [
@@ -224,21 +225,17 @@ export const getters = {
 
 export const mutations = {
   setSelectedFilter (state, data) {
-  console.log('DATA:::::', data)
-    if(data.parent.type==='radio'){
-      Vue.set(state.selectedFilters, data.parent.slug,data.filter.slug );
-    }else{
-      Vue.set(state.selectedFilters, data.parent.slug,[data.filter.slug] );
-
-    }
+    // console.log('FILTER:::::', data)
+    Vue.set(state.selectedFilters, data.type, data.filter)
 
   },
 }
 
 export const actions = {
-  ACT_SELECT_FILTER (context, { filter, parent }) {
-    context.commit('setSelectedFilter', { filter, parent })
+  ACT_SELECT_FILTER (context, { filter, type }) {
+    context.commit('setSelectedFilter', { filter, type })
   },
+
 }
 
 
