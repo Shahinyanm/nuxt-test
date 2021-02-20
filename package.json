@@ -14,6 +14,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
+    "@nuxtjs/router-extras": "^1.1.1",
     "@nuxtjs/tailwindcss": "^3.4.2"
   }
 }
