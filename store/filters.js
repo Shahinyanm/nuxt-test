@@ -225,7 +225,6 @@ export const getters = {
 
 export const mutations = {
   setSelectedFilter (state, data) {
-    // console.log('FILTER:::::', data)
     Vue.set(state.selectedFilters, data.type, data.filter)
 
   },
@@ -235,7 +234,6 @@ export const actions = {
   ACT_SELECT_FILTER (context, { filter, type }) {
     context.commit('setSelectedFilter', { filter, type })
   },
-
 }
 
 
