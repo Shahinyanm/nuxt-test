@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full bg-white">
-sedasdasdadasd
+      <nuxt-link to="/products/filter">Filters</nuxt-link>
   </div>
 </template>
 
