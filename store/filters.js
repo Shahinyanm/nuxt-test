@@ -1,6 +1,5 @@
-import Vuex from 'vuex'
-new Vuex.Store({
-  state: () => ({
+
+export const state = () => ({
     selectedFilters: {},
     types: [
       {
@@ -212,5 +211,15 @@ new Vuex.Store({
         ],
       },
     ],
-  }),
 })
+
+export const mutations = {
+  add (state, text) {
+    state.list.push({
+      text,
+      done: false,
+      id: Date.now()
+    })
+  },
+
+}
