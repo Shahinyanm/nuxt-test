@@ -3,7 +3,6 @@
         <div class="flex flex-col mb-2 gap-8 p-8 ">
             <div :key="index" class="w-full flex flex-col items-start justify-start bg-gray-100"
                  v-for="(filter,index) in filters">
-
                 <template v-if="filter.type ==='radio'">
                     <label class="text-18 font-medium text-black mb-2 p-4">{{filter.title}} </label>
                     <div :key="filterIndex"
@@ -25,7 +24,8 @@
                     <label :key="filterIndex" class="flex justify-start items-start"
                            v-for="(value,filterIndex) in getByCondition(filter.values)">
                         <div class="bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">
-                            <input @click="selectFilter(value,filter)" class="opacity-0 absolute" type="checkbox" :checked="isSelectedFilter(value,filter)">
+                            <input :checked="isSelectedFilter(value,filter)" @click="selectFilter(value,filter)" class="opacity-0 absolute"
+                                   type="checkbox">
                             <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none"
                                  viewBox="0 0 20 20">
                                 <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/>
@@ -49,10 +49,6 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    async asyncData ({ params }) {
-      const filterParams = params // When calling /abc the slug will be "abc"
-      return { filterParams }
-    },
     data () {
       return {}
     },
@@ -97,7 +93,7 @@
         })
       },
       isSelectedFilter (value, type) {
-        console.log('check array:::',Array.isArray(this.selectedFilters[type.slug]), this.selectedFilters[type.slug])
+        console.log('check array:::', Array.isArray(this.selectedFilters[type.slug]), this.selectedFilters[type.slug])
         return Object.keys(this.selectedFilters).length ? Array.isArray(this.selectedFilters[type.slug])
           ? this.selectedFilters[type.slug].includes(value.slug)
           : this.selectedFilters[type.slug] === value.slug : false
