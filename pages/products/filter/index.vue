@@ -49,8 +49,8 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    data () {
-      return {}
+    async asyncData({ params }) {
+      return { params }
     },
     computed: {
       ...mapGetters({
@@ -59,7 +59,7 @@
       }),
     },
     watch: {
-      '$route.params': {
+      params: {
         handler (value) {
           Object.keys(value).forEach(param => {
             if (typeof value[param] !== 'undefined') {
@@ -93,7 +93,6 @@
         })
       },
       isSelectedFilter (value, type) {
-        console.log('check array:::', Array.isArray(this.selectedFilters[type.slug]), this.selectedFilters[type.slug])
         return Object.keys(this.selectedFilters).length ? Array.isArray(this.selectedFilters[type.slug])
           ? this.selectedFilters[type.slug].includes(value.slug)
           : this.selectedFilters[type.slug] === value.slug : false
